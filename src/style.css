@@ -1,0 +1,80 @@
+body {
+  font-family: "Thasadith", sans-serif;
+  background-color: #ffffff;
+}
+form {
+  font-family: "Sarabun", sans-serif;
+  margin-top: 1em;
+}
+h1,
+h2,
+h3 {
+  text-align: center;
+  color: #222831;
+}
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 5em;
+  color: #fbd46d;
+}
+h3 {
+  font-size: 1em;
+}
+footer {
+  font-size: 0.8em;
+  color: #4f8a8b;
+  margin-top: 1em;
+  margin-left: 2em;
+}
+.container {
+  background-color: #eeeeee;
+  margin: 2em 2em 0 2em;
+  box-shadow: 1px 1px 20px lightgray;
+  border-radius: 5px;
+}
+.searchBar {
+  display: inline-block;
+  width: 20%;
+  margin-right: 5px;
+}
+#currentLoc {
+  font-family: "Sarabun", sans-serif;
+}
+.searchButton,
+#currentLoc {
+  background-color: #4f8a8b;
+  border-color: #4f8a8b;
+}
+.searchButton:hover,
+#currentLoc:hover {
+  background-color: #222831;
+  border-color: #222831;
+}
+.temp {
+  color: #fbd46d;
+}
+.temp:hover {
+  color: #fbd46d;
+}
+.weatherGraphic {
+  font-size: 9em;
+  text-align: center;
+  color: #fbd46d;
+}
+.row {
+  text-align: center;
+}
+.weatherInfo {
+  border: 1px solid #4f8a8b60;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px #82b2b3ad;
+}
+.weatherInfo,
+.weatherForecast {
+  font-family: "Sarabun", sans-serif;
+  font-size: 1em;
+  padding: 0.5em;
+  margin: 0.5em;
+}
