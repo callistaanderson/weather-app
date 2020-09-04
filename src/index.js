@@ -18,7 +18,7 @@ let todayDisplay = document.querySelector("#display-today");
 todayDisplay.innerHTML = displayDayTime(new Date());
 
 //Feature 2: Display city and temp submitted on form
-function showTemp(response) {
+function displayWeather(response) {
   console.log(response);
   let city = response.data.name;
   let country = response.data.sys.country;
@@ -28,30 +28,30 @@ function showTemp(response) {
   let temp = document.querySelector("#temperature");
   temp.innerHTML = `${currentTemp}°`;
 }
-function handleSearch(event) {
+function searchCity(event) {
   event.preventDefault();
-  let searchInput = document.querySelector("#search-input");
-  console.log(searchInput.value);
+  let searchInput = document.querySelector("#search-input").value;
+  console.log(searchInput);
   let apiKey = "ccbf5e9b7ef0654ec52299eec6a9711b";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&units=metric&appid=${apiKey}`;
-  axios.get(apiUrl).then(showTemp);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayWeather);
 }
 let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", handleSearch);
+searchForm.addEventListener("submit", searchCity);
 
 //Feature 3: Add current location button and display temp
-function showPosition(position) {
+function searchPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   console.log(latitude);
   console.log(longitude);
   let apiKey = "ccbf5e9b7ef0654ec52299eec6a9711b";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
-  axios.get(apiUrl).then(showTemp);
+  axios.get(apiUrl).then(displayWeather);
 }
-function handleClick(event) {
+function showPosition(event) {
   event.preventDefault();
-  navigator.geolocation.getCurrentPosition(showPosition);
+  navigator.geolocation.getCurrentPosition(searchPosition);
 }
 let currentLocButton = document.querySelector("#currentLoc");
-currentLocButton.addEventListener("click", handleClick);
+currentLocButton.addEventListener("click", showPosition);
