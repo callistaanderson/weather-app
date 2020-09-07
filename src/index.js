@@ -21,6 +21,36 @@ let todayDisplay = document.querySelector("#display-today");
 todayDisplay.innerHTML = displayDayTime(new Date());
 
 //Feature 2: Display city and temp submitted on form
+function displayWeatherGraphic(temp, description) {
+  console.log(temp);
+  console.log(description);
+  let weatherGraphic = document.querySelector(".weatherGraphic");
+  if (temp < -10) {
+    weatherGraphic.innerHTML = `<i class="fas fa-temperature-low"></i>`;
+  }
+  if (temp > 35) {
+    weatherGraphic.innerHTML = `<i class="fas fa-temperature-high"></i>`;
+  } else {
+    if (description === `Clear`) {
+      weatherGraphic.innerHTML = `<i class="fas fa-sun"></i>`;
+    }
+    if (description === `Clouds`) {
+      weatherGraphic.innerHTML = `<i class="fas fa-cloud"></i>`;
+    }
+    if (description === `Snow`) {
+      weatherGraphic.innerHTML = `<i class="far fa-snowflake"></i>`;
+    }
+    if (description === `Rain`) {
+      weatherGraphic.innerHTML = `<i class="fas fa-cloud-showers-heavy"></i>`;
+    }
+    if (description === `Drizzle`) {
+      weatherGraphic.innerHTML = `<i class="fas fa-cloud-sun-rain"></i>`;
+    }
+    if (description === `Thunderstorm`) {
+      weatherGraphic.innerHTML = `<i class="fas fa-bolt"></i>`;
+    }
+  }
+}
 function displayWeather(response) {
   console.log(response);
   let city = response.data.name;
@@ -39,6 +69,7 @@ function displayWeather(response) {
   wind.innerHTML = `${windSpeed}`;
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `${currentHumidity}`;
+  displayWeatherGraphic(currentTemp, currentDescription);
 }
 function searchCity(event) {
   event.preventDefault();
