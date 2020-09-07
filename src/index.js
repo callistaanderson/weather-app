@@ -2,6 +2,9 @@
 function displayDayTime(now) {
   let hours = now.getHours();
   let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
   let days = [
     "Sunday",
     "Monday",
@@ -23,10 +26,19 @@ function displayWeather(response) {
   let city = response.data.name;
   let country = response.data.sys.country;
   let currentTemp = Math.round(response.data.main.temp);
+  let currentDescription = response.data.weather[0].main;
+  let windSpeed = response.data.wind.speed;
+  let currentHumidity = response.data.main.humidity;
   let location = document.querySelector("#city");
   location.innerHTML = `${city}, ${country}`;
   let temp = document.querySelector("#temperature");
   temp.innerHTML = `${currentTemp}°`;
+  let description = document.querySelector("#description");
+  description.innerHTML = `${currentDescription}`;
+  let wind = document.querySelector("#wind");
+  wind.innerHTML = `${windSpeed}`;
+  let humidity = document.querySelector("#humidity");
+  humidity.innerHTML = `${currentHumidity}`;
 }
 function searchCity(event) {
   event.preventDefault();
@@ -55,3 +67,9 @@ function showPosition(event) {
 }
 let currentLocButton = document.querySelector("#currentLoc");
 currentLocButton.addEventListener("click", showPosition);
+
+//Feature 4: Farenheit Conversion
+//let celsiusLink = document.querySelector("#celsius");
+//let farenheitLink = document.querySelector("#farenheit");
+//celsiusLink.addEventListener("click", switchCelsius);
+//farenheitLink.addEventListener("click", switchFarenheit);

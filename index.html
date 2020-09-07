@@ -49,8 +49,8 @@
       <h1 id="city">City</h1>
       <h2>
         <span id="temperature">00°</span>
-        <a href="#" id="celsius" class="temp">C</a
-        ><a href="#" id="farenheit" class="temp"></a>
+        <a href="#" id="celsius" class="temp">C</a> |
+        <a href="#" id="farenheit" class="temp">F</a>
       </h2>
       <h3 id="display-today">Today</h3>
       <div class="weatherGraphic">
@@ -58,16 +58,16 @@
       </div>
       <div class="row weatherInfo">
         <div class="col-4">
-          Precipitation <br />
-          0mm
+          Description <br />
+          <span id="description"></span>
         </div>
         <div class="col-4">
           Wind <br />
-          4km/h
+          <span id="wind"></span>km/h
         </div>
         <div class="col-4">
           Humidity <br />
-          60%
+          <span id="humidity"></span>%
         </div>
       </div>
       <div class="row weatherForecast">
@@ -102,8 +102,10 @@
       </div>
     </div>
     <footer>
-      <a href="https://github.com/callistaanderson/weather-app">Coded</a> by
-      Callista Anderson for SheCodes final project
+      <a href="https://github.com/callistaanderson/weather-app" target="_blank"
+        >Coded</a
+      >
+      by Callista Anderson for SheCodes final project
     </footer>
     <script src="src/index.js"></script>
   </body>
