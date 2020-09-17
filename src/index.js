@@ -1,7 +1,11 @@
 //Feature 1: Display current day and time
-function displayDayTime(now) {
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
+function displayDayTime(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
@@ -14,16 +18,13 @@ function displayDayTime(now) {
     "Friday",
     "Saturday",
   ];
-  let day = days[now.getDay()];
-  return `${day} ${hours}:${minutes}`;
+  let day = days[date.getDay()];
+  let todayDisplay = document.querySelector("#display-today");
+  todayDisplay.innerHTML = `${day} ${hours}:${minutes}`;
 }
-let todayDisplay = document.querySelector("#display-today");
-todayDisplay.innerHTML = displayDayTime(new Date());
 
 //Feature 2: Display city and temp submitted on form
 function displayWeatherGraphic(temp, description) {
-  console.log(temp);
-  console.log(description);
   let weatherGraphic = document.querySelector(".weatherGraphic");
   if (temp < -10) {
     weatherGraphic.innerHTML = `<i class="fas fa-temperature-low"></i>`;
@@ -65,9 +66,8 @@ function displayWeather(response) {
   wind.innerHTML = `${windSpeed}`;
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `${currentHumidity}`;
-  console.log(currentTemp);
-  console.log(currentDescription);
   displayWeatherGraphic(currentTemp, currentDescription);
+  displayDayTime(response.data.dt + response.data.timezone);
 }
 function searchCity(event) {
   event.preventDefault();
