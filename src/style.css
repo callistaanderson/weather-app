@@ -58,6 +58,12 @@ footer {
 .temp:hover {
   color: #fbd46d;
 }
+.inactiveLink {
+  cursor: default;
+}
+.inactiveLink:hover {
+  text-decoration: none;
+}
 .weatherGraphic {
   font-size: 9em;
   text-align: center;

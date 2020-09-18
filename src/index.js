@@ -1,6 +1,7 @@
 //Feature 1: Display current day and time
 function displayDayTime(timestamp) {
   let date = new Date(timestamp * 1000);
+  console.log(date);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -20,7 +21,7 @@ function displayDayTime(timestamp) {
   ];
   let day = days[date.getDay()];
   let todayDisplay = document.querySelector("#display-today");
-  todayDisplay.innerHTML = `${day} ${hours}:${minutes}`;
+  todayDisplay.innerHTML = `As at ${day} ${hours}:${minutes}`;
 }
 
 //Feature 2: Display city and temp submitted on form
@@ -52,21 +53,21 @@ function displayWeather(response) {
   console.log(response);
   let city = response.data.name;
   let country = response.data.sys.country;
-  let currentTemp = Math.round(response.data.main.temp);
+  celsiusTemp = response.data.main.temp;
   let currentDescription = response.data.weather[0].main;
   let windSpeed = response.data.wind.speed;
   let currentHumidity = response.data.main.humidity;
   let location = document.querySelector("#city");
   location.innerHTML = `${city}, ${country}`;
   let temp = document.querySelector("#temperature");
-  temp.innerHTML = `${currentTemp}°`;
+  temp.innerHTML = `${Math.round(celsiusTemp)}°`;
   let description = document.querySelector("#description");
   description.innerHTML = `${currentDescription}`;
   let wind = document.querySelector("#wind");
   wind.innerHTML = `${windSpeed}`;
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `${currentHumidity}`;
-  displayWeatherGraphic(currentTemp, currentDescription);
+  displayWeatherGraphic(celsiusTemp, currentDescription);
   displayDayTime(response.data.dt + response.data.timezone);
 }
 function searchCity(event) {
@@ -98,7 +99,24 @@ let currentLocButton = document.querySelector("#currentLoc");
 currentLocButton.addEventListener("click", showPosition);
 
 //Feature 4: Farenheit Conversion
-//let celsiusLink = document.querySelector("#celsius");
-//let farenheitLink = document.querySelector("#farenheit");
-//celsiusLink.addEventListener("click", switchCelsius);
-//farenheitLink.addEventListener("click", switchFarenheit);
+function switchFahrenheit(event) {
+  event.preventDefault();
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  celsiusLink.classList.remove("inactiveLink");
+  fahrenheitLink.classList.add("inactiveLink");
+  let tempElement = document.querySelector("#temperature");
+  tempElement.innerHTML = `${Math.round(fahrenheitTemp)}°`;
+}
+function switchCelsius(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("inactiveLink");
+  fahrenheitLink.classList.remove("inactiveLink");
+  let tempElement = document.querySelector("#temperature");
+  tempElement.innerHTML = `${Math.round(celsiusTemp)}°`;
+}
+
+let celsiusTemp = null;
+let celsiusLink = document.querySelector("#celsius");
+let fahrenheitLink = document.querySelector("#fahrenheit");
+celsiusLink.addEventListener("click", switchCelsius);
+fahrenheitLink.addEventListener("click", switchFahrenheit);
