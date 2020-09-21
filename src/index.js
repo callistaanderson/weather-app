@@ -70,7 +70,6 @@ function displayWeatherGraphic(temp, description) {
   }
 }
 function displayWeather(response) {
-  console.log(response);
   let city = response.data.name;
   let country = response.data.sys.country;
   celsiusTemp = response.data.main.temp;
@@ -110,8 +109,6 @@ searchForm.addEventListener("submit", handleSubmit);
 function searchPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
-  console.log(latitude);
-  console.log(longitude);
   let apiKey = "ccbf5e9b7ef0654ec52299eec6a9711b";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(displayWeather);
@@ -148,7 +145,6 @@ fahrenheitLink.addEventListener("click", switchFahrenheit);
 
 //Feature 5: Forecast
 function displayForecast(response) {
-  console.log(response);
   let forcastListElement = document.querySelector("#forecast");
   forcastListElement.innerHTML = null;
   let forecastData = null;
