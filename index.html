@@ -49,8 +49,10 @@
       <h1 id="city">City</h1>
       <h2>
         <span id="temperature">00°</span>
-        <a href="#" id="celsius" class="temp inactiveLink">C</a> |
-        <a href="#" id="fahrenheit" class="temp">F</a>
+        <span class="units">
+          <a href="#" id="celsius" class="temp inactiveLink">C</a> |
+          <a href="#" id="fahrenheit" class="temp">F</a>
+        </span>
       </h2>
       <h3 id="display-today">Date</h3>
       <div class="weatherGraphic">
@@ -70,7 +72,7 @@
           <span id="humidity"></span>%
         </div>
       </div>
-      <div class="row weatherForecast">
+      <div class="row weatherForecast" id="forecast">
         <div class="col">
           Sun <br />
           50

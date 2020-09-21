@@ -58,6 +58,10 @@ footer {
 .temp:hover {
   color: #fbd46d;
 }
+.units {
+  font-size: 0.4em;
+  vertical-align: middle;
+}
 .inactiveLink {
   cursor: default;
 }
